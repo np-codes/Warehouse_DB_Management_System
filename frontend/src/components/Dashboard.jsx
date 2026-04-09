@@ -15,7 +15,7 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		if (!userData) {
-		navigate("/");
+			navigate("/");
 		}
 	}, [userData, navigate]);
 
