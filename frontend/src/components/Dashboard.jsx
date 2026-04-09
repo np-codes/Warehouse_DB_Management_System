@@ -3,8 +3,22 @@ import Header from "./Header";
 import UserPanel from "./UserPanel";
 import QueryPanel from "./QueryPanel";
 import OutputPanel from "./OutputPanel";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+
+	const { userData } = useContext(UserContext);
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (!userData) {
+		navigate("/");
+		}
+	}, [userData, navigate]);
+
 	return (
 		<div className="h-screen bg-gray-950 text-white flex flex-col overflow-hidden">
 			<Header />
