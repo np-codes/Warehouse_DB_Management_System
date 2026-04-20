@@ -1,3 +1,5 @@
+-- CREATE SCHEMA `warehouse_schema` ;
+
 -- -------------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------------
 -- ---------------------------- CREATING TABLES --------------------------------------------
@@ -30,17 +32,22 @@ CREATE TABLE INVENTORY(
 CREATE TABLE SUPPLIER(
   	supplier_id INT PRIMARY KEY,
   	name VARCHAR(100),
-  	phone VARCHAR(15),
   	street VARCHAR(100),
   	city VARCHAR(50),
   	state CHAR(2),
   	zip_code CHAR(5)
 	);
+    
+CREATE TABLE SUPPLIER_PHONE(
+  	supplier_id INT,
+  	phone VARCHAR(15),
+    PRIMARY KEY ( supplier_id, phone )
+	);
 
-CREATE TABLE `ORDER`(
-  	order_id INT PRIMARY KEY,
+CREATE TABLE ORDERS(
   	supplier_id INT,
   	product_id INT,
+    PRIMARY KEY ( supplier_id, product_id ),
   	quantity INT
 	);
 
@@ -109,14 +116,19 @@ ALTER TABLE EMPLOYEE
 ADD CONSTRAINT fk_employee_WAREHOUSE_DEPARTMENT
 FOREIGN KEY (warehouse_dept_id) REFERENCES WAREHOUSE_DEPARTMENT(warehouse_dept_id);
 
--- ORDER table constraint ---------------------------------------------------------
-ALTER TABLE `ORDER`
-ADD CONSTRAINT fk_order_supplier
+-- ORDERS table constraint ---------------------------------------------------------
+ALTER TABLE ORDERS
+ADD CONSTRAINT fk_orders_supplier
 FOREIGN KEY (supplier_id) REFERENCES SUPPLIER(supplier_id);
 
-ALTER TABLE `ORDER`
-ADD CONSTRAINT fk_order_product
+ALTER TABLE ORDERS
+ADD CONSTRAINT fk_orders_product
 FOREIGN KEY (product_id) REFERENCES PRODUCT(product_id);
+
+-- SUPPLIER_PHONE table constraint ---------------------------------------------------------
+ALTER TABLE SUPPLIER_PHONE
+ADD CONSTRAINT fk_supplierphone_supplier
+FOREIGN KEY (supplier_id) REFERENCES SUPPLIER(supplier_id);
 
 
 
