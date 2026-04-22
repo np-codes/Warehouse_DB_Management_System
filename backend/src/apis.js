@@ -14,7 +14,7 @@ router.post("/warehousedb/login", async(req,res) => {
             return res.status(404).json({ message: "Employee Not Found", result: false });
 
         res.status(201).json({ 
-            message: "Employee Found",
+            message: "Query Ran Sucessfully",
             result: result
         });
 

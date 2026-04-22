@@ -20,7 +20,7 @@ const QueryPanel = () => {
 			setErrorMessage,
 			setIsEmptyTable,
 		});
-
+			
 		if (tabledata?.length > 0) {
 			setTableData(tabledata);
 			setIsEmptyTable(null);
@@ -60,7 +60,7 @@ const QueryPanel = () => {
 					<textarea
 						value={query}
 						placeholder="Write your SQL query here... (e.g., SELECT * FROM users;)"
-						className="w-full h-40 bg-transparent text-white text-sm outline-none resize-none placeholder-gray-500"
+						className="w-full h-full bg-transparent text-white text-sm outline-none resize-none placeholder-gray-500"
 						onChange={(e) => setQuery(e.target.value)}
 					/>
 				</div>
