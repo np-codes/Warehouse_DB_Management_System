@@ -113,13 +113,13 @@ VITE_BASE_URL=http://localhost:3000/warehousedb
 To set up the database using **MySQL Workbench**:
 
 1. Open MySQL Workbench
-2. Create a new schema named:
+2. Create a new schema:
 
 ```
-warehouse_db
+your_schema_name
 ```
 
-3. Open the file:
+4. Open the file:
 
 ```
 warehouseFrame.sql
