@@ -131,4 +131,92 @@ ADD CONSTRAINT fk_supplierphone_supplier
 FOREIGN KEY (supplier_id) REFERENCES SUPPLIER(supplier_id);
 
 
+-- -------------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------------
+-- ---------------------------- Inserting Dummy Data --------------------------------------------
+-- -------------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------------
 
+-- PRODUCT
+INSERT INTO PRODUCT VALUES
+(1, 'Laptop', 1200.00),
+(2, 'Phone', 800.00),
+(3, 'Tablet', 500.00),
+(4, 'Headphones', 150.00),
+(5, 'Monitor', 300.00);
+
+-- SUPPLIER
+INSERT INTO SUPPLIER VALUES
+(1, 'TechSupply Co.', '123 Tech St', 'Atlanta', 'GA', '30301'),
+(2, 'GadgetWorld', '456 Gadget Ave', 'Charlotte', 'NC', '28202'),
+(3, 'DeviceHub', '789 Device Blvd', 'Columbia', 'SC', '29201');
+
+-- SUPPLIER_PHONE
+INSERT INTO SUPPLIER_PHONE VALUES
+(1, '111-111-1111'),
+(1, '111-222-3333'),
+(2, '222-222-2222'),
+(3, '333-333-3333');
+
+-- DEPARTMENT
+INSERT INTO DEPARTMENT VALUES
+(1, 'Electronics'),
+(2, 'Storage'),
+(3, 'Logistics'),
+(4, 'Quality Control');
+
+
+-- ---------------------------
+INSERT INTO WAREHOUSE VALUES
+(1, '100 Main St', 'Augusta', 'GA', '30901', 5000, NULL),
+(2, '200 Broad St', 'Columbia', 'SC', '29201', 3000, NULL),
+(3, '300 King St', 'Charlotte', 'NC', '28202', 4000, NULL);
+
+-- -------------------------
+INSERT INTO WAREHOUSE_DEPARTMENT (warehouse_id, department_id, employee_count, manager_id) VALUES
+(1, 1, 10, NULL),
+(1, 2, 8, NULL),
+(2, 3, 12, NULL),
+(2, 4, 6, NULL),
+(3, 1, 9, NULL);
+
+-- -------------------------------
+INSERT INTO EMPLOYEE 
+(fname, lname, salary, doj, street, city, state, zip_code, position, warehouse_dept_id)
+VALUES
+('Will', 'Boot', 45000, '2020-02-10', '22 Birch St', 'Charlotte', 'NC', '30807', 'Supervisor', 2),
+('John', 'Doe', 60000, '2022-01-15', '12 Elm St', 'Augusta', 'GA', '30901', 'Manager', 1),
+('Jane', 'Smith', 55000, '2021-03-20', '34 Oak St', 'Augusta', 'GA', '30901', 'Supervisor', 2),
+('Mike', 'Brown', 50000, '2020-07-10', '56 Pine St', 'Columbia', 'SC', '29201', 'Manager', 3),
+('Emily', 'Davis', 48000, '2023-05-01', '78 Cedar St', 'Columbia', 'SC', '29201', 'Supervisor', 4),
+('Chris', 'Wilson', 62000, '2019-11-11', '90 Maple St', 'Charlotte', 'NC', '28202', 'Manager', 5),
+('Anna', 'Taylor', 45000, '2022-08-08', '22 Birch St', 'Charlotte', 'NC', '28202', 'Staff', 5);
+
+-- -------------------------------
+UPDATE WAREHOUSE_DEPARTMENT SET manager_id = 1000000 WHERE warehouse_dept_id = 1;
+UPDATE WAREHOUSE_DEPARTMENT SET manager_id = 1000001 WHERE warehouse_dept_id = 2;
+UPDATE WAREHOUSE_DEPARTMENT SET manager_id = 1000002 WHERE warehouse_dept_id = 3;
+UPDATE WAREHOUSE_DEPARTMENT SET manager_id = 1000003 WHERE warehouse_dept_id = 4;
+UPDATE WAREHOUSE_DEPARTMENT SET manager_id = 1000004 WHERE warehouse_dept_id = 5;
+
+-- ---------------------------------------
+UPDATE WAREHOUSE SET head_id = 1000000 WHERE warehouse_id = 1;
+UPDATE WAREHOUSE SET head_id = 1000002 WHERE warehouse_id = 2;
+UPDATE WAREHOUSE SET head_id = 1000004 WHERE warehouse_id = 3;
+
+-- -------------------------------------
+INSERT INTO INVENTORY VALUES
+(1, 1, 1, 50),
+(2, 2, 1, 100),
+(3, 3, 2, 75),
+(4, 4, 2, 200),
+(5, 5, 3, 60),
+(6, 1, 3, 40);
+
+-- -----------------------------------------
+INSERT INTO ORDERS VALUES
+(1, 1, 20),
+(1, 2, 30),
+(2, 3, 15),
+(2, 4, 25),
+(3, 5, 10);
